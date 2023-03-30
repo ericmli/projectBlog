@@ -1,0 +1,79 @@
+{
+  "login": [
+    {
+      "id": 1,
+      "name": "Eric",
+      "email": "ericmli1334@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "lasthitaki",
+      "email": "lasthitaki@gmail.com",
+      "password": "123456789",
+      "id": 2
+    },
+    {
+      "name": "Mario",
+      "email": "mario@gmail.com",
+      "password": "123",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Eric",
+      "email": "ericmli1334@gmail.com",
+      "photo": "https://images.generated.photos/bA2GHs7sxFaE2vTQ0fz1a4OiaBYl-JLHGpBvEJt8hJk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ3OTQ2LmpwZw.jpg",
+      "icon": "heart"
+    },
+    {
+      "id": 2,
+      "name": "Leo",
+      "email": "teste@gmail.com",
+      "photo": "https://images.generated.photos/WE6KNUSM2KYbaVUPNNlExyHnSEuwd-0crlAbJyZck6o/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzgyNTI2LmpwZw.jpg",
+      "icon": "bell"
+    },
+    {
+      "id": 3,
+      "name": "Matheus",
+      "email": "teste232@gmail.com",
+      "photo": "https://images.generated.photos/CvdjYAY6xugyzaKlgtQ6oX0ooQMon36ZssXTM5HxYGA/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTc1MzQzLmpwZw.jpg",
+      "icon": "heart"
+    },
+    {
+      "id": 4,
+      "name": "Jasmine",
+      "email": "teste232@gmail.com",
+      "photo": "https://images.generated.photos/JCFoKnud0HDV302hlZXS9Wk98XknD7j46mCeQePrPl8/rs:fit:512:512/wm:0.95:sowe:18:18:0.33/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTM0MDk2LmpwZw.jpg",
+      "icon": "heart"
+    },
+    {
+      "id": 5,
+      "name": "Lucas",
+      "email": "teste232@gmail.com",
+      "photo": "https://images.generated.photos/bA2GHs7sxFaE2vTQ0fz1a4OiaBYl-JLHGpBvEJt8hJk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ3OTQ2LmpwZw.jpg",
+      "icon": "heart"
+    },
+    {
+      "id": 6,
+      "name": "Emilia",
+      "email": "teste232@gmail.com",
+      "photo": "https://images.generated.photos/Ix_ybOiQGHjUbsRPSjKVPhnbkFGMgPQ7eFQxsLZ12pg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODMzMjIxLmpwZw.jpg",
+      "icon": "heart"
+    },
+    {
+      "id": 7,
+      "name": "Gabriel",
+      "email": "teste232@gmail.com",
+      "photo": "https://images.generated.photos/bA2GHs7sxFaE2vTQ0fz1a4OiaBYl-JLHGpBvEJt8hJk/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQ3OTQ2LmpwZw.jpg",
+      "icon": "heart"
+    }
+  ],
+  "news" : [
+    {
+      "id": 1,
+      "name": "Big Data"
+    }
+  ]
+}
