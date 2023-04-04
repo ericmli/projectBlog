@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput } from 'react-native'
 import styles from './styles'
 import Button from '../../components/Button'
@@ -8,13 +8,23 @@ import { useForm, Controller } from 'react-hook-form'
 import { AuthContext } from '../../service/auth'
 import api from '../../service'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
 
 export default function Login({ navigation }) {
+  const { login } = useContext(AuthContext)
+
+  const schema = yup.object().shape({
+    name: yup.string().email('Please enter valid email').required('Email Address is Required'),
+    password: yup.string().min(6, ({ min }) => `Password must be at least ${min} characters`).required('Password is required')
+  })
+
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       name: '',
       password: ''
-    }
+    },
+    resolver: yupResolver(schema)
   })
 
   const onSubmit = async input => {
@@ -24,7 +34,7 @@ export default function Login({ navigation }) {
     }
 
     try {
-      const response = await api.get(`login?email=${formInput.name}&${formInput.password}`)
+      const response = await api.get(`login?email=${formInput.name}&&password=${formInput.password}`)
       const token = response.data
       if (response.data.length !== 0) {
         login(token)
@@ -37,9 +47,7 @@ export default function Login({ navigation }) {
     }
   }
 
-  const { login } = useContext(AuthContext)
-
-  useEffect(() => {
+  React.useEffect(() => {
     autoLogin()
   }, [])
 
@@ -78,7 +86,7 @@ export default function Login({ navigation }) {
               />
             )}
           />
-          {errors.name && <Text style={styles.error}>E-mail Invalid</Text>}
+          {errors.name && <Text style={styles.error}>{errors.name.message}</Text>}
 
           <Text style={styles.textTopInput}>Password</Text>
           <Controller
@@ -98,7 +106,7 @@ export default function Login({ navigation }) {
               />
             )}
           />
-          {errors.password && <Text style={styles.error}>Password Invalid</Text>}
+          {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
 
           <Button
             nameInput={'LOGIN'}

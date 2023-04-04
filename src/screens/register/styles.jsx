@@ -35,5 +35,10 @@ export default StyleSheet.create({
     marginTop: 20,
     top: 20,
     color: Theme.colors.blue[20]
+  },
+  error: {
+    color: 'red',
+    fontSize: 12
   }
+
 })

@@ -9,9 +9,7 @@ export default StyleSheet.create({
   },
   body: {
     paddingTop: 30,
-    width: '90%',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    width: '100%'
   },
   textName: {
     fontSize: 18,
@@ -85,7 +83,8 @@ export default StyleSheet.create({
   },
   listMainList: {
     margin: 10,
-    marginLeft: 0
+    marginLeft: 0,
+    marginTop: 0
   },
   imageMainList: {
     width: 236,
@@ -98,6 +97,12 @@ export default StyleSheet.create({
     borderRadius: 28,
     paddingRight: 20
   },
+  textBottom: {
+    fontSize: 24,
+    color: Theme.colors.blue[20],
+    fontWeight: 600,
+    paddingBottom: 10
+  },
   textMainList: {
     position: 'absolute',
     bottom: 60,
@@ -105,5 +110,29 @@ export default StyleSheet.create({
     fontSize: 30,
     paddingLeft: 15,
     fontWeight: 200
+  },
+  listNewsList: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: 10
+  },
+  imageNews: {
+    width: '30%',
+    height: 150,
+    borderRadius: 20
+  },
+  listNewsListTexts: {
+    width: '65%',
+    padding: 20,
+    paddingTop: 10
+  },
+  textNewsName: {
+    color: Theme.colors.blue[40],
+    fontSize: 20
+  },
+  textNewsTitle: {
+    color: '#000',
+    width: '80%'
   }
 })

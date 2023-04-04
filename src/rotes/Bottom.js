@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import { Menu } from '../screens/menu'
 import { HomeSvg } from '../imgs/svg/home'
 import ArticlesSvg from '../imgs/svg/articles'
@@ -47,9 +47,11 @@ export function Bottom() {
         options={{
           headerShown: false,
           tabBarButton: props => (
+            <View style={styles.a}>
             <TouchableOpacity {...props} style={styles.addButtonContainer}>
               <Text style={styles.addButton}>+</Text>
             </TouchableOpacity>
+          </View>
           )
         }}
       />
@@ -80,8 +82,13 @@ export function Bottom() {
 }
 
 const styles = StyleSheet.create({
+  a: {
+    backgroundColor: 'white',
+    bottom: 25,
+    padding: 5,
+    borderRadius: 50
+  },
   addButtonContainer: {
-    top: -25, // define a posição vertical do botão
     justifyContent: 'center',
     alignItems: 'center',
     width: 50,

@@ -18,22 +18,30 @@ const screenOptionStyle = {
 
 export function MyStack() {
   return (
-    <Stack.Navigator screenOptions={screenOptionStyle} initialRouteName="sendHome">
+    <Stack.Navigator screenOptions={screenOptionStyle} initialRouteName="Onboarding">
       <Stack.Screen
         name="Login"
         component={IncludeAll}
         options={{ headerShown: false }}
       />
 
-      <Stack.Screen name="Onboarding" component={Onboarding} />
+      <Stack.Screen
+      name="Onboarding"
+      component={Onboarding}
+      options={{ headerShown: false }}
+      />
 
-      <Stack.Screen name="Reset Password" component={Reset} />
+      <Stack.Screen
+      name="Reset Password"
+      component={Reset}
+      />
 
       <Tab.Screen
         name="sendHome"
         component={Bottom}
         options={{ headerShown: false }}
       />
+
     </Stack.Navigator>
   )
 }
