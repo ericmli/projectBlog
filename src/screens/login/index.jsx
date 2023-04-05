@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React from 'react'
-import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import Button from '../../components/Button'
 import { LoginSocial } from '../../components/loginSocial'
@@ -14,6 +14,7 @@ import * as yup from 'yup'
 export default function Login({ navigation }) {
   const { login } = React.useContext(AuthContext)
   const [alert, setAlert] = React.useState('')
+  const [hide, setHide] = React.useState(true)
 
   const schema = yup.object().shape({
     name: yup.string().email('Please enter valid email').required('Email Address is Required'),
@@ -66,7 +67,7 @@ export default function Login({ navigation }) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.body}>
           <Text style={styles.title}>Welcome back</Text>
           <Text>Sign in with your account</Text>
@@ -91,26 +92,32 @@ export default function Login({ navigation }) {
           {errors.name && <Text style={styles.error}>{errors.name.message}</Text>}
 
           <Text style={styles.textTopInput}>Password</Text>
-          <Controller
-            name="password"
-            control={control}
-            rules={{
-              required: true,
-              maxLength: 100
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                secureTextEntry
-                ref={ref => { input2 = ref }}
-                onKeyPress={handleSubmit()}
-              />
-            )}
-          />
-          {errors.password && <Text style={styles.error}>{errors.password.message }</Text>}
+          <View>
+            <Controller
+              name="password"
+              control={control}
+              rules={{
+                required: true,
+                maxLength: 100
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                  style={styles.input}
+                  onBlur={onBlur}
+                  onChangeText={onChange}
+                  value={value}
+                  secureTextEntry={hide}
+                  ref={ref => { input2 = ref }}
+                  onKeyPress={handleSubmit()}
+                />
+              )}
+            />
+            <Text style={styles.hidePassword} onPress={() =>
+              setHide(!hide)}>{
+                hide ? 'Show' : 'Hide'
+              }</Text>
+          </View>
+          {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
           <Text style={styles.error}>{alert}</Text>
 
           <Button
@@ -130,7 +137,7 @@ export default function Login({ navigation }) {
           </View>
           <LoginSocial />
         </View>
-      </ScrollView>
+      </View>
     </TouchableWithoutFeedback>
   )
 }

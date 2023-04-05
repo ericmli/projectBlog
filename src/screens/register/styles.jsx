@@ -39,6 +39,12 @@ export default StyleSheet.create({
   error: {
     color: 'red',
     fontSize: 12
+  },
+  hidePassword: {
+    position: 'absolute',
+    top: '40%',
+    right: 0,
+    fontSize: 16,
+    color: Theme.colors.blue[40]
   }
-
 })

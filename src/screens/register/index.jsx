@@ -10,6 +10,8 @@ import { LoginSocial } from '../../components/loginSocial'
 import { useForm, Controller } from 'react-hook-form'
 
 export default function Register({ navigation }) {
+  const [hide, setHide] = React.useState(true)
+
   const schema = yup.object().shape({
     name: yup.string().required('Name is required'),
 
@@ -91,6 +93,7 @@ export default function Register({ navigation }) {
         {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
 
         <Text style={styles.textTopInput}>Password</Text>
+        <View>
         <Controller
           control={control}
           rules={{
@@ -102,11 +105,16 @@ export default function Register({ navigation }) {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              secureTextEntry
+              secureTextEntry={hide}
             />
           )}
           name="password"
         />
+        <Text style={styles.hidePassword} onPress={() =>
+          setHide(!hide)}>{
+            hide ? 'Show' : 'Hide'
+          }</Text>
+        </View>
         {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
 
         <Text style={styles.textTopInput}>Confirm Password</Text>
