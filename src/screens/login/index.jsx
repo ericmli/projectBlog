@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput } from 'react-native'
+/* eslint-disable no-undef */
+import React from 'react'
+import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput, ScrollView, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import Button from '../../components/Button'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { LoginSocial } from '../../components/loginSocial'
 import { useForm, Controller } from 'react-hook-form'
 import { AuthContext } from '../../service/auth'
@@ -12,7 +12,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 export default function Login({ navigation }) {
-  const { login } = useContext(AuthContext)
+  const { login } = React.useContext(AuthContext)
+  const [alert, setAlert] = React.useState('')
 
   const schema = yup.object().shape({
     name: yup.string().email('Please enter valid email').required('Email Address is Required'),
@@ -40,7 +41,7 @@ export default function Login({ navigation }) {
         login(token)
         navigation.navigate('sendHome')
       } else {
-        console.log('Login invalido')
+        setAlert('E-mail or Password Invalid')
       }
     } catch (error) {
       console.log(error)
@@ -65,7 +66,7 @@ export default function Login({ navigation }) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.body}>
           <Text style={styles.title}>Welcome back</Text>
           <Text>Sign in with your account</Text>
@@ -83,6 +84,7 @@ export default function Login({ navigation }) {
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={() => { input2.focus() }}
               />
             )}
           />
@@ -103,10 +105,13 @@ export default function Login({ navigation }) {
                 onChangeText={onChange}
                 value={value}
                 secureTextEntry
+                ref={ref => { input2 = ref }}
+                onKeyPress={handleSubmit()}
               />
             )}
           />
-          {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
+          {errors.password && <Text style={styles.error}>{errors.password.message }</Text>}
+          <Text style={styles.error}>{alert}</Text>
 
           <Button
             nameInput={'LOGIN'}
@@ -125,7 +130,7 @@ export default function Login({ navigation }) {
           </View>
           <LoginSocial />
         </View>
-      </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   )
 }

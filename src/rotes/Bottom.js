@@ -17,7 +17,8 @@ export function Bottom() {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: Theme.colors.blue[40],
-        tabBarLabelStyle: { fontSize: 14 }
+        tabBarLabelStyle: { fontSize: 14 },
+        tabBarStyle: { height: 55 }
       }}>
       <Tab.Screen
         name="Home"
@@ -48,10 +49,10 @@ export function Bottom() {
           headerShown: false,
           tabBarButton: props => (
             <View style={styles.a}>
-            <TouchableOpacity {...props} style={styles.addButtonContainer}>
-              <Text style={styles.addButton}>+</Text>
-            </TouchableOpacity>
-          </View>
+              <TouchableOpacity {...props} style={styles.addButtonContainer}>
+                <Text style={styles.addButton}>+</Text>
+              </TouchableOpacity>
+            </View>
           )
         }}
       />

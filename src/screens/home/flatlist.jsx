@@ -8,6 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import api from '../../service'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useFocusEffect } from '@react-navigation/native'
+import LinearGradient from 'react-native-linear-gradient'
 
 const DATA = [
   {
@@ -45,12 +46,11 @@ export function Flat() {
 
   const renderItem = ({ item }) => (
     <View style={styles.containerList}>
-      <View style={styles.border}>
+      <LinearGradient style={styles.border} colors={['#376AED', '#49B0E2', '#9CECFB']} start={{ x: 1, y: 0 }} end={{ x: 0, y: 1 }}>
         <Image source={{ uri: item.photo }} style={styles.imageList} />
         <Icon name={item.icon} size={20} color={'white'} style={styles.iconList} />
-      </View>
+      </LinearGradient>
       <Text style={styles.textList}>{item.name}</Text>
-
     </View>
   )
 
@@ -90,7 +90,7 @@ export function Flat() {
         showsHorizontalScrollIndicator={false}
       />
 
-    <Text style={styles.textBottom}>Latest News</Text>
+      <Text style={styles.textBottom}>Latest News</Text>
 
     </View>
   )

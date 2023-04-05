@@ -50,19 +50,13 @@ export default StyleSheet.create({
   imageList: {
     width: 54,
     height: 54,
-    borderRadius: 15,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginTop: 'auto',
-    marginBottom: 'auto'
+    borderRadius: 25
   },
   border: {
-    position: 'relative',
-    borderWidth: 2,
-    borderColor: '#49B0E2',
-    height: 68,
-    width: 68,
-    borderRadius: 20
+    height: 58,
+    width: 58,
+    borderRadius: 25,
+    padding: 2
   },
   textList: {
     position: 'absolute',
@@ -99,7 +93,7 @@ export default StyleSheet.create({
   },
   textBottom: {
     fontSize: 24,
-    color: Theme.colors.blue[20],
+    color: Theme.colors.blue[10],
     fontWeight: 600,
     paddingBottom: 10
   },
@@ -132,7 +126,9 @@ export default StyleSheet.create({
     fontSize: 20
   },
   textNewsTitle: {
-    color: '#000',
-    width: '80%'
+    marginTop: 10,
+    color: Theme.colors.blue[10],
+    width: '100%',
+    fontSize: 20
   }
 })
