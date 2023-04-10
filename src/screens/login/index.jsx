@@ -1,23 +1,24 @@
 /* eslint-disable no-undef */
 import React from 'react'
-import { Text, View, TouchableWithoutFeedback, Keyboard, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableWithoutFeedback, Keyboard, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import Button from '../../components/Button'
 import { LoginSocial } from '../../components/loginSocial'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { AuthContext } from '../../service/auth'
 import api from '../../service'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { Input } from '../../components/input'
+import { Password } from '../../components/inputPassword'
 
 export default function Login({ navigation }) {
   const { login } = React.useContext(AuthContext)
   const [alert, setAlert] = React.useState('')
-  const [hide, setHide] = React.useState(true)
 
   const schema = yup.object().shape({
-    name: yup.string().email('Please enter valid email').required('Email Address is Required'),
+    name: yup.string().email('Please enter valid E-mail').required('E-mail Address is Required'),
     password: yup.string().min(6, ({ min }) => `Password must be at least ${min} characters`).required('Password is required')
   })
 
@@ -72,52 +73,20 @@ export default function Login({ navigation }) {
           <Text style={styles.title}>Welcome back</Text>
           <Text>Sign in with your account</Text>
 
-          <Text style={styles.textTopInput}>E-mail</Text>
-          <Controller
+          <Input
             name="name"
+            placeholder="E-mail"
             control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                onSubmitEditing={() => { input2.focus() }}
-              />
-            )}
+            errors={errors}
+            // onSubmitEditing={() => input2Ref.current.focus()}
           />
-          {errors.name && <Text style={styles.error}>{errors.name.message}</Text>}
 
-          <Text style={styles.textTopInput}>Password</Text>
-          <View>
-            <Controller
-              name="password"
-              control={control}
-              rules={{
-                required: true,
-                maxLength: 100
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                  style={styles.input}
-                  onBlur={onBlur}
-                  onChangeText={onChange}
-                  value={value}
-                  secureTextEntry={hide}
-                  ref={ref => { input2 = ref }}
-                  onKeyPress={handleSubmit()}
-                />
-              )}
-            />
-            <Text style={styles.hidePassword} onPress={() =>
-              setHide(!hide)}>{
-                hide ? 'Show' : 'Hide'
-              }</Text>
-          </View>
-          {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
+          <Password
+            name="password"
+            placeholder="Password"
+            control={control}
+            errors={errors}
+          />
           <Text style={styles.error}>{alert}</Text>
 
           <Button

@@ -31,30 +31,6 @@ export default StyleSheet.create({
   },
   textReset: {
     color: Theme.colors.blue[40]
-  },
-  input: {
-    width: '100%',
-    borderBottomWidth: 0.5,
-    textAlign: 'left',
-    fontSize: 16,
-    marginTop: 15,
-    color: 'black'
-  },
-  textTopInput: {
-    marginTop: 20,
-    top: 20,
-    color: Theme.colors.blue[20]
-  },
-  error: {
-    color: 'red',
-    fontSize: 12
-  },
-  hidePassword: {
-    position: 'absolute',
-    top: '40%',
-    right: 0,
-    fontSize: 16,
-    color: Theme.colors.blue[40]
   }
 
 })
